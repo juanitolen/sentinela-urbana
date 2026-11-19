@@ -1,0 +1,11 @@
+[
+ {"id":"s0","text":"Alagamentos, calor extremo e falta de energia, água ou transporte afetam milhões de pessoas nas cidades. Os dados existem, mas estão espalhados, chegam tarde e ninguém sabe em qual informação confiar."},
+ {"id":"s1","text":"A Sentinela Urbana resolve isso. Ela cruza sensores, bases públicas e relatos da comunidade, calcula a confiança de cada dado e prioriza os alertas. A Ana, moradora da Mooca, entra com o seu perfil e aceita a política de privacidade."},
+ {"id":"s2","text":"O painel mostra o mapa de riscos ao vivo, os alertas ativos, as validações pendentes e se cada fonte está atualizada. A lista de alertas é ordenada por prioridade, que combina o nível de risco com o nível de confiança."},
+ {"id":"s3","text":"No detalhe, vemos o ciclo de vida do evento, a origem de cada evidência, o sensor, a base pública e o relato com foto, e como a confiança foi calculada, fator por fator, junto com o cálculo do risco."},
+ {"id":"s4","text":"Este relato na Rua Taquari tem confiança baixa e ainda não gerou alerta. Quando a Ana confirma que também está vendo, a confiança sobe, o evento é confirmado e o alerta é emitido. Ele chega na central de notificações."},
+ {"id":"s5","text":"Para registrar uma ocorrência, são quatro passos: o tipo, o local no mapa, a intensidade com foto, e a revisão, que já mostra a confiança estimada e como os dados pessoais são protegidos."},
+ {"id":"s6","text":"Agora, como agente da Defesa Civil, o Carlos recebe a tarefa de validação, confere o evento e confirma. A confiança vai a cem e o alerta é disparado."},
+ {"id":"s7","text":"Na tela de fontes, cada dado mostra origem, frequência e confiança. O simulador envia uma leitura de sensor e exibe cada etapa do fluxo: recebimento, validação, confiança, risco, filtro da LGPD e notificação, em menos de um segundo."},
+ {"id":"s8","text":"Por fim, o usuário controla seus consentimentos, exporta ou exclui seus dados. Sentinela Urbana: alertas rápidos, confiáveis e transparentes para a cidade."}
+]

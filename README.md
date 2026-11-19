@@ -72,3 +72,18 @@ tools/                    scripts Playwright (capturas, PDF, gravação do víde
 - **Gate:** sem alerta público com confiança < 50 ou com relato comunitário isolado; nesses casos o agente valida.
 
 Os dados de sensores e APIs são simulados (atualizados a cada 5 s). Mapas: © Esri, © colaboradores do OpenStreetMap.
+
+## Vídeo de demonstração
+
+[`video/Demo-Sentinela-Urbana.mp4`](video/Demo-Sentinela-Urbana.mp4) — 2 min 14 s, narrado e legendado (roteiro em [`video/roteiro.json`](video/roteiro.json)). Gerado com `tools/record.mjs` (Playwright) e narração TTS pt-BR.
+
+## Regerar artefatos
+
+```bash
+cd app && npm run build && npx vite preview --port 4173 &   # servidor local
+cd tools && npm install && npx playwright install chromium
+node docshots.mjs ../docs/telas                               # capturas de tela
+node pdf.mjs ../docs/documentacao.html ../docs/Documentacao-Sentinela-Urbana.pdf
+```
+
+Para a entrega, preencha nomes, RMs e links na capa (`docs/documentacao.html`, marcadores `{{...}}`) e gere o PDF de novo.
