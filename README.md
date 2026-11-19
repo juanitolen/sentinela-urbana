@@ -86,4 +86,4 @@ node docshots.mjs ../docs/telas                               # capturas de tela
 node pdf.mjs ../docs/documentacao.html ../docs/Documentacao-Sentinela-Urbana.pdf
 ```
 
-Para a entrega, preencha nomes, RMs e links na capa (`docs/documentacao.html`, marcadores `{{...}}`) e gere o PDF de novo.
+Para a entrega, preencha o link do vídeo na capa (`docs/documentacao.html`, marcadores `{{...}}`) e gere o PDF de novo.
