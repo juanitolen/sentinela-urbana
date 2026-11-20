@@ -5,6 +5,7 @@ Protótipo funcional da **Global Solution 2026.2 — Engenharia de Software (FIA
 A Sentinela Urbana monitora riscos urbanos do dia a dia — **alagamentos**, **ilhas de calor** e **interrupções de serviços essenciais** (energia, água e transporte). Ela cruza dados de **sensores IoT**, **bases públicas** e **registros da comunidade**, calcula um **nível de confiança** para cada dado, classifica o **risco**, prioriza os alertas e notifica moradores e agentes locais, respeitando a **LGPD**.
 
 - **Demo (deploy):** https://juanitolen.github.io/sentinela-urbana/
+- **Vídeo (YouTube):** https://youtu.be/q8HRSQH76yA
 - **Documentação (PDF):** [`docs/Documentacao-Sentinela-Urbana.pdf`](docs/Documentacao-Sentinela-Urbana.pdf)
 - **Diagramas:** [`docs/diagramas/`](docs/diagramas)
 
@@ -86,4 +87,4 @@ node docshots.mjs ../docs/telas                               # capturas de tela
 node pdf.mjs ../docs/documentacao.html ../docs/Documentacao-Sentinela-Urbana.pdf
 ```
 
-Para a entrega, preencha o link do vídeo na capa (`docs/documentacao.html`, marcadores `{{...}}`) e gere o PDF de novo.
+
