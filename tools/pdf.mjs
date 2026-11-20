@@ -1,26 +1,32 @@
 import { chromium } from 'playwright'
 import { pathToFileURL } from 'url'
+import { execFileSync } from 'child_process'
 import path from 'path'
 import fs from 'fs'
 const src = path.resolve(process.argv[2]); const out = path.resolve(process.argv[3])
+const tmp = path.join(path.dirname(out), '.tmp-pdf'); fs.mkdirSync(tmp, { recursive: true })
 const b = await chromium.launch()
 const p = await b.newPage({ viewport: { width: 1100, height: 1400 }, deviceScaleFactor: 2 })
 p.on('pageerror', e => console.log('ERR', e.message))
 await p.goto(pathToFileURL(src).href, { waitUntil: 'networkidle' })
 await p.waitForSelector('body[data-ready="1"]', { timeout: 30000 })
 await p.evaluate(() => document.fonts.ready)
-await p.pdf({ path: out, format: 'A4', printBackground: true, margin: { top: '16mm', bottom: '16mm', left: '14mm', right: '14mm' },
-  displayHeaderFooter: true, headerTemplate: '<span></span>',
-  footerTemplate: '<div style="font-size:8px;width:100%;padding:0 14mm;color:#64748B;display:flex;justify-content:space-between;font-family:sans-serif"><span>Sentinela Urbana — GS 2026.2 Engenharia de Software</span><span><span class="pageNumber"></span>/<span class="totalPages"></span></span></div>' })
-// exporta diagramas
+const common = { format: 'A4', printBackground: true, preferCSSPageSize: true }
+// capa sem número; demais páginas numeradas no canto superior direito (ABNT), contando a capa
+await p.pdf({ ...common, path: path.join(tmp, 'capa.pdf'), pageRanges: '1' })
+await p.pdf({ ...common, path: path.join(tmp, 'corpo.pdf'), pageRanges: '2-', displayHeaderFooter: true,
+  headerTemplate: '<div style="width:100%;font-size:10px;font-family:serif;text-align:right;padding:0 20mm 0 0;margin-top:12mm"><span class="pageNumber"></span></div>',
+  footerTemplate: '<span></span>' })
+execFileSync('pdfunite', [path.join(tmp, 'capa.pdf'), path.join(tmp, 'corpo.pdf'), out])
+fs.rmSync(tmp, { recursive: true })
+// diagramas avulsos
 const dir = path.join(path.dirname(out), 'diagramas'); fs.mkdirSync(dir, { recursive: true })
-const names = ['diagrama-sequencia', 'diagrama-estados']; await p.emulateMedia({ media: 'screen' })
+await p.emulateMedia({ media: 'screen' })
+const names = ['diagrama-sequencia', 'diagrama-estados']
 const diags = await p.locator('.diagram').all()
 for (let i = 0; i < diags.length; i++) {
-  await diags[i].screenshot({ path: path.join(dir, names[i] + '.png'), scale: 'device' })
-  const svg = await diags[i].locator('svg').evaluate(s => s.outerHTML)
-  fs.writeFileSync(path.join(dir, names[i] + '.svg'), svg)
+  await diags[i].screenshot({ path: path.join(dir, names[i] + '.png') })
+  fs.writeFileSync(path.join(dir, names[i] + '.svg'), await diags[i].locator('svg').evaluate(s => s.outerHTML))
 }
 await p.locator('.arch-wrap').screenshot({ path: path.join(dir, 'arquitetura-camadas.png') })
-await b.close()
-console.log('ok')
+await b.close(); console.log('ok')
