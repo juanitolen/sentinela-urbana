@@ -76,7 +76,7 @@ Os dados de sensores e APIs são simulados (atualizados a cada 5 s). Mapas: © E
 
 ## Vídeo de demonstração
 
-[`video/Demo-Sentinela-Urbana.mp4`](video/Demo-Sentinela-Urbana.mp4) — 2 min 14 s, narrado e legendado (roteiro em [`video/roteiro.json`](video/roteiro.json)). Gerado com `tools/record.mjs` (Playwright) e narração TTS pt-BR.
+[`video/Demo-Sentinela-Urbana.mp4`](video/Demo-Sentinela-Urbana.mp4) — 2 min 14 s, narrado e legendado (roteiro em [`video/roteiro.json`](video/roteiro.json)). Gravado com `tools/record.mjs` (Playwright).
 
 ## Regerar artefatos
 
